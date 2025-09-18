@@ -1,4 +1,4 @@
-import { getAllTodos, removeTodo, updateTodo } from "./data";
+import { addTodo, getAllTodos, removeTodo, updateTodo } from "./data";
 import { clearNewTodoInput, getTodoId, renderTodos } from "./ui";
 
 export function onLoadEventHandler() {
