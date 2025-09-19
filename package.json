@@ -31,6 +31,8 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "jss": "^10.10.0",
+    "jss-preset-default": "^10.10.0"
   }
 }
