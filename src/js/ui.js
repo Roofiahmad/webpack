@@ -33,9 +33,12 @@ export function getTodoId(element) {
 }
 
 function showNotification() {
-  const notification = `<div class="${styles.notification}">Todo item added</div>`;
-  document.body.innerHTML += notification;
-  // And we are going to remove this div after 2 seconds.
+  const notificationEl = document.createElement("div");
+  notificationEl.classList.add("alert", "alert-success", styles.notification);
+  notificationEl.setAttribute("role", "alert");
+  notificationEl.innerHTML = "Todo item added";
+  document.body.appendChild(notificationEl);
+
   setTimeout(function () {
     const notificationElement = document.querySelector(
       `.${styles.notification}`
