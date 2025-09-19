@@ -1,5 +1,7 @@
 import * as styles from "../styles/notification.module.css";
 import { css } from "@emotion/css";
+import CheckmarkImage from "../../images/checkmark.svg";
+import { getMotivationalPictures } from "./api.js";
 
 const checkboxSize = "30px";
 
@@ -20,7 +22,7 @@ export function renderTodos(todos) {
     return `
             <li data-id="${todo.id}" class="${className}">
                 <span class="custom-checkbox">
-                    <img class="check" src="./images/checkmark.svg" width="22" height="22"></img>
+                    <img class="check" src="${CheckmarkImage}" width="22" height="22"></img>
                     <input class="${realCheckboxClass}" data-element="real-checkbox" type="checkbox" ${completionClass} />
                 </span>
                 <label>${todo.text}</label>
@@ -29,6 +31,7 @@ export function renderTodos(todos) {
         `;
   });
   document.querySelector(".todo-list").innerHTML = renderedItemArray.join("");
+  renderMotivationalPictures();
 }
 
 export function clearNewTodoInput() {
@@ -58,4 +61,26 @@ function showNotification() {
     );
     notificationElement.parentNode.removeChild(notificationElement);
   }, 2000);
+}
+
+function renderMotivationalPictures() {
+  getMotivationalPictures().then((pictures) => {
+    const motivationalPicturesHtml = `
+                    <div class="motivational-pictures">
+                        ${pictures
+                          .map((picture) => {
+                            return (
+                              '<img class="header-image" src="' +
+                              picture +
+                              '" alt="Motivational picture" />'
+                            );
+                          })
+                          .join("")}
+                    </div>
+            `;
+    const motivationalPicturesContainer = document.querySelector(
+      ".motivational-pictures-container"
+    );
+    motivationalPicturesContainer.innerHTML = motivationalPicturesHtml;
+  });
 }

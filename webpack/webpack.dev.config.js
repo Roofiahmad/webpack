@@ -63,6 +63,18 @@ module.exports = merge(common, {
           },
         ],
       },
+      {
+        test: /\.(png|jpg|svg)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024,
+          },
+        },
+        generator: {
+          filename: "./images/[name][ext]",
+        },
+      },
     ],
   },
 });

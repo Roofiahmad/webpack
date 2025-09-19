@@ -90,13 +90,30 @@ h1 {
         margin-right: 10px;
         cursor: pointer;
         visibility: hidden;
-        /* background: url("../../images/delete.png") center no-repeat; */
+        background: url("../../images/delete.png") center no-repeat;
         background-size: 90%;
       }
 
       &:hover .delete {
         visibility: visible;
       }
+    }
+  }
+}
+
+.motivational-pictures-container {
+  display: flex;
+  justify-content: center;
+
+  .motivational-pictures {
+    display: flex;
+    gap: 50px;
+    margin: 200px auto;
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 8px;
     }
   }
 }
