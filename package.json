@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": " webpack --config webpack/webpack.prod.config.js",
-    "dev": " webpack serve --config webpack/webpack.dev.config.js --hot"
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",
+    "dev": "cross-env NODE_ENV=dev webpack serve --config webpack/webpack.dev.config.js --hot",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@babel/plugin-proposal-pipeline-operator": "^7.27.1",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-typescript": "^7.27.1",
     "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^13.0.1",
+    "core-js": "^3.45.1",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
     "html-loader": "^5.1.0",
@@ -32,6 +38,7 @@
     "sass": "^1.92.1",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
+    "typescript": "^5.9.2",
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
@@ -39,6 +46,8 @@
   },
   "dependencies": {
     "@emotion/css": "^11.13.5",
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "cross-env": "^10.0.0",
+    "lodash": "^4.17.21"
   }
 }
