@@ -9,7 +9,9 @@ const path = require("path");
 
 module.exports = merge(common, {
   mode: "production",
+  // devtool: "source-map",
   optimization: {
+    usedExports: true,
     minimize: true,
     minimizer: [
       `...`,

@@ -25,7 +25,8 @@
       ]
     },
     "dev": {
-      "presets": [["@babel/preset-env"]]
+      "presets": [["@babel/preset-env"]],
+      "plugins": ["@emotion"]
     }
   }
 }

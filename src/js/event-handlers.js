@@ -2,7 +2,7 @@ import { addTodo, getAllTodos, removeTodo, updateTodo } from "./data";
 //@ts-ignore
 import { trim } from "./helper";
 import { clearNewTodoInput, getTodoId, renderTodos } from "./ui";
-import { capitalize } from "lodash";
+import { capitalize } from "lodash-es";
 
 export function onLoadEventHandler() {
   renderTodos(getAllTodos());
