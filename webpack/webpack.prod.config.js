@@ -120,29 +120,27 @@ module.exports = merge(common, {
       maxSize: Infinity,
       minSize: 2000,
       cacheGroups: {
-        bootstrap: {
-          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
-          name: "bootstrap",
-        },
-        jquery: {
-          test: /[\\/]node_modules[\\/]jquery[\\/]/,
-          name: "jquery",
-        },
         lodash: {
           test: /[\\/]node_modules[\\/]lodash-es[\\/]/,
           name: "lodash-es",
-        },
-        popperjs: {
-          test: /[\\/]node_modules[\\/]@popperjs[\\/]/,
-          name: "popperjs",
+          priority: 2,
         },
         emotion: {
           test: /[\\/]node_modules[\\/]@emotion[\\/]/,
           name: "emotion",
+          priority: 2,
         },
         node_modules: {
           test: /[\\/]node_modules[\\/]/,
           name: "node_modules",
+          chunks: "initial",
+        },
+        async: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "async",
+          name(module, chunks) {
+            return chunks.map((chunk) => chunk.name).join("-");
+          },
         },
       },
     },

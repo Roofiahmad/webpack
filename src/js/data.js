@@ -1,22 +1,23 @@
 import data from "../todos.json";
+let todosData = data;
 
 export function getAllTodos() {
-  return data;
+  return todosData;
 }
 
 export function addTodo(todo) {
-  data.push(todo);
+  todosData.push(todo);
 }
 
 export function removeTodo(id) {
-  data = data.filter(function (item) {
+  todosData = todosData.filter(function (item) {
     return item.id !== id;
   });
 }
 
 export function updateTodo(id, completed) {
-  const itemIndex = data.findIndex(function (value) {
+  const itemIndex = todosData.findIndex(function (value) {
     return value.id === id;
   });
-  data[itemIndex].completed = completed;
+  todosData[itemIndex].completed = completed;
 }
