@@ -22,7 +22,13 @@ app.get("/", (req, res) => {
   res.sendFile(absoluteHtmlPath);
 });
 
-app.use("/static", expressStaticGzip(path.resolve(__dirname, "./dist")));
+app.use(
+  "/static",
+  expressStaticGzip(path.resolve(__dirname, "./dist"), {
+    enableBrotli: true,
+    orderPreference: ["br", "gz"],
+  })
+);
 
 app.listen(3000, () => {
   console.log("server run on port 3000");
