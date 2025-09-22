@@ -8,6 +8,10 @@ import {
   confirmRemoveEventHandler,
 } from "./event-handlers";
 
+export function renderApp() {
+  onLoadEventHandler();
+}
+
 window.addEventListener("load", onLoadEventHandler);
 document.addEventListener("change", function (event) {
   if (event.target.classList.contains("new-todo")) {

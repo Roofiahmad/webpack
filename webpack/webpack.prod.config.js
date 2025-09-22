@@ -6,8 +6,10 @@ const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 const glob = require("glob");
 const path = require("path");
 // const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = merge(common, {
+  entry: "./src/js/index.js",
   mode: "production",
   // devtool: "source-map",
   optimization: {
@@ -148,6 +150,7 @@ module.exports = merge(common, {
   },
   output: {
     filename: "js/[name].[contenthash:12].js",
+    publicPath: "/static/",
   },
 
   module: {
@@ -230,6 +233,10 @@ module.exports = merge(common, {
       paths: glob.sync(`${path.join(__dirname, "../src")}/**/*`, {
         nodir: true,
       }),
+    }),
+    new CompressionPlugin({
+      algorithm: "gzip",
+      test: /\.(js|css)$/,
     }),
   ],
 });
