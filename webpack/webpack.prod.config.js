@@ -65,10 +65,93 @@ module.exports = merge(common, {
       //   ],
       // }),
     ],
+    splitChunks: {
+      // FIRST STRATEGY => split base on specifict dependency
+      // cacheGroups: {
+      //   jquery: {
+      //     test: /[\\/]node_modules[\\/]jquery[\\/]/,
+      //     chunks: "initial",
+      //     name: "jquery",
+      //   },
+      //   bootstrap: {
+      //     test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
+      //     chunks: "initial",
+      //     name: "bootstrap",
+      //   },
+      // },
+
+      // SECOND STRATEGY => split based on size
+      // chunks: "all",
+      // maxSize: 140000,
+      // minSize: 50000,
+      // name(module, chunks, cacheGroupKey) {
+      //   const filePathAsArray = module.identifier().split("/");
+      //   return filePathAsArray[filePathAsArray.length - 1];
+      // },
+
+      // split node modules with main app
+      // chunks: "all",
+      // maxSize: Infinity,
+      // minSize: 0,
+      // cacheGroups: {
+      //   node_modules: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: "node_modules",
+      //   },
+      // },
+
+      // split for each dependency
+      // chunks: "all",
+      // maxSize: Infinity,
+      // minSize: 0,
+      // cacheGroups: {
+      //   node_modules: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name(module) {
+      //       const packageName = module.context.match(
+      //         /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+      //       )[1];
+      //       return packageName;
+      //     },
+      //   },
+      // },
+
+      chunks: "all",
+      maxSize: Infinity,
+      minSize: 2000,
+      cacheGroups: {
+        bootstrap: {
+          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
+          name: "bootstrap",
+        },
+        jquery: {
+          test: /[\\/]node_modules[\\/]jquery[\\/]/,
+          name: "jquery",
+        },
+        lodash: {
+          test: /[\\/]node_modules[\\/]lodash-es[\\/]/,
+          name: "lodash-es",
+        },
+        popperjs: {
+          test: /[\\/]node_modules[\\/]@popperjs[\\/]/,
+          name: "popperjs",
+        },
+        emotion: {
+          test: /[\\/]node_modules[\\/]@emotion[\\/]/,
+          name: "emotion",
+        },
+        node_modules: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "node_modules",
+        },
+      },
+    },
+    runtimeChunk: "single",
   },
   output: {
     filename: "js/[name].[contenthash:12].js",
   },
+
   module: {
     rules: [
       {

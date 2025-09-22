@@ -5,7 +5,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",
     "dev": "cross-env NODE_ENV=dev webpack serve --config webpack/webpack.dev.config.js --hot",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "bundle-analyzer": "cross-env NODE_ENV=production webpack --config webpack/webpack.analyze.config.js"
   },
   "keywords": [],
   "author": "",
@@ -41,6 +42,7 @@
     "style-loader": "^4.0.0",
     "typescript": "^5.9.2",
     "webpack": "^5.101.3",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
     "webpack-merge": "^6.0.1"
@@ -49,6 +51,7 @@
     "@emotion/css": "^11.13.5",
     "bootstrap": "^5.3.8",
     "cross-env": "^10.0.0",
+    "jquery": "^3.7.1",
     "lodash-es": "^4.17.21"
   }
 }
